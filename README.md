@@ -43,10 +43,24 @@ It's because in this case characters uses 1 bytes per value to store on RAM (8 b
 
 Hence each structure will utilize a different quantity of bits to store its data.
 
+# Arrays
+A contiguous data that is represented in the same way that is the RAM. Each type of data need a different quantity of bits in a RAM, for example, integer 32 bits or characters 8 bits, so at each 32 bits or 8 bits one value will be saved and so on, continuaslly.
+
+Arrays performance:
+
+r(read), ins(insert), del(delete), mid(middle)
+
+|   r   | ins/del mid | ins/del end |
+|  ---  | ----------- | ----------- |
+|  O(1) | O(n)        | O(1)        |
+
+Arrays have constant time operation to read and to insert/delete at the end, and it's because these operations uses the index of the array to do. The indexes are the way that arrays know where in memory the value are. So, for every value containing on a array, we have a index. The worst cases when manipulating a array are if we need to ins/del at the middle. It's for the way arrays are: contiguous in memory. We cannot delete an item at the middle and let there a hole, it would break the array in two parts and the second part we would loose for do not known it anymore. Then, for operations on the middle, we need to shift all the rest of values to accomodate the changes.
+
 # Static Arrays
-
-
+Are fixed size of arrays pre-allocatted on compilation time. It means that before the algorithm run we already know the quantity of bits the CPU will need to execute the task. So we say to the computer to save that space on a RAM to us and then nothing can use it even if we not utilize that space entirelly, hence we can notice that when we use that kind of arrays we are reservating memory to use on the present, future or never. 
 
 # Dynamic Arrays
+When using languages like python or javascript, that is the default type of array offerred to be used. This type of array works by calculating the size of the array automaticly for us. As the arrays need to be stored continuously in memory we always need to know the space we would need to use this kind of structure. When we do not know, we can create a strategy where when the algorithm reach the limit of the array, it can create another new array with doubled size of the first, then move all elements from the first to the second. So it is what happens under the hood when we use dynamic arrays.
+Realize that not always the insertion operation at the end will be O(1) - constant time, but can be O(n) if we are in cases in which we need to create another array with doubled size and move all elements to the another one.
 
 
