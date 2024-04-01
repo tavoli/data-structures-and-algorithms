@@ -63,4 +63,13 @@ Are fixed size of arrays pre-allocatted on compilation time. It means that befor
 When using languages like python or javascript, that is the default type of array offerred to be used. This type of array works by calculating the size of the array automaticly for us. As the arrays need to be stored continuously in memory we always need to know the space we would need to use this kind of structure. When we do not know, we can create a strategy where when the algorithm reach the limit of the array, it can create another new array with doubled size of the first, then move all elements from the first to the second. So it is what happens under the hood when we use dynamic arrays.
 Realize that not always the insertion operation at the end will be O(1) - constant time, but can be O(n) if we are in cases in which we need to create another array with doubled size and move all elements to the another one.
 
+# Stack
+One of the most common data structures of all. This is used on arrays and have a law that it works called as LIFO (Last in First Out). In stack all operations are made at the end. It means that insertions goes on the end together with deletes.
+
+In our wordly view one example of place we often use this law is on set of plates. Take notice that always we used to get a plate from the top of the set (delete) and after wash it to return the object to the set we put that at the top again (push/append).
+
+As this structure delete objects from its sets from the top (the very end), the output of the removed items will be in reverse order. Which can be very interesting to use on tasks that demands reverse of strings or when we need to read the objects from the top.
+
+Stacks technically supports the operations push, delete and peek. As all these operations occur at top of the array and don't need to rearrange the containing items in the array ending up with a very fast O(1) - constant time type of structure.
+
 
