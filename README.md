@@ -72,4 +72,7 @@ As this structure delete objects from its sets from the top (the very end), the 
 
 Stacks technically supports the operations push, delete and peek. As all these operations occur at top of the array and don't need to rearrange the containing items in the array ending up with a very fast O(1) - constant time type of structure.
 
+# Linked Lists
+
+Despite not being stored in contiguous memory (such as an array), a linked list can still be traversed with the use of a programming language. In terms of memory usage, linked lists have the benefit of not needing pre-allocated or duplicated space to accommodate more values, unlike dynamic arrays. Instead, the values can be stored at any place in memory for they are linked in code using the memory cursor.
 
