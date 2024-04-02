@@ -76,3 +76,7 @@ Stacks technically supports the operations push, delete and peek. As all thes
 
 Despite not being stored in contiguous memory (such as an array), a linked list can still be traversed with the use of a programming language. In terms of memory usage, linked lists have the benefit of not needing pre-allocated or duplicated space to accommodate more values, unlike dynamic arrays. Instead, the values can be stored at any place in memory for they are linked in code using the memory cursor.
 
+It means that every item inside this structure (normally called Node - an Object) have a pointer (the memory cursor) to the next node. By this rule, we can navigate easily from the beginning of the list the very end. This structure also gives us a reference of the head and the tail nodes, which can become very worth when we have tasks that these nodes are treated as great importance and hence often accessed. So, no matter how often we need to get them, always can be taken in a O(1) - constant time.
+
+In many implementations of Linked List it may follow with a get, append, get_values, and remove. What is very interesting to mention is that removing a node at the list beginning can be O(1), unlike on arrays as we need to shift all rest of values to keep the items contiguous in memory. It is not necessary because to delete a node in this structure we just need to update the next cursor.
+
