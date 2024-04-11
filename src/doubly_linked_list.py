@@ -1,19 +1,21 @@
 class Node:
-    def __init__(self, val = 0, next = None, prev = None):
+    def __init__(self, val=0, next=None, prev=None):
         self.val = val
         self.next = next
         self.prev = prev
 
 class DoublyLinkedList:
     def __init__(self):
-        self.head = None
-        self.tail = None
+        self.head = Node()
+        self.tail = Node()
+        self.head.next = self.tail
+        self.tail.prev = self.head
         self.size = 0
-        
+
     def get(self, index: int) -> int:
-        if index >= self.size:
-            return
-        curr = self.head
+        if index < 0 or index >= self.size:
+            return -1
+        curr = self.head.next
         for _ in range(index):
             curr = curr.next
         return curr.val
@@ -25,65 +27,27 @@ class DoublyLinkedList:
         self.addAtIndex(self.size, val)
 
     def addAtIndex(self, index: int, val: int) -> None:
-        if index > self.size:
-            return
+        if index < 0 or index > self.size:
+            return -1
 
-        node = Node(val)
-        if index == 0:
-            if self.size:
-                node.next = self.head
-                self.head = node
-                self.head.next.prev = node
-            else:
-                self.head = node
-                self.tail = node
-            self.size += 1
-            return
-
-        if index == self.size:
-            if self.size:
-                node.prev = self.tail
-                node.prev.next = node
-                self.tail = node
-            else:
-                self.tail = node
-                self.head = node
-            self.size += 1
-            return
-        
         curr = self.head
         for _ in range(index):
             curr = curr.next
 
-        node.next = curr
-        node.prev = curr.prev
-        curr.prev.next = node
-        curr.prev = node
+        node = Node(val, curr.next, curr)
+        curr.next.prev = node
+        curr.next = node
         self.size += 1
 
     def deleteAtIndex(self, index: int) -> None:
-        if index >= self.size:
-            return
+        if index < 0 or index >= self.size:
+            return -1
 
-        if index == 0:
-            if self.size == 1:
-                self.head = None
-                self.tail = None
-            else:
-                self.head = self.head.next
-                self.head.prev = None
-            self.size -= 1
-            return
-
-        curr = self.head
+        curr = self.head.next
         for _ in range(index):
             curr = curr.next
 
-        if curr == self.tail:
-            self.tail = curr.prev
-            self.tail.next = None
-        else:
-            curr.prev.next = curr.next
-            curr.next.prev = curr.prev
+        curr.prev.next = curr.next
+        curr.next.prev = curr.prev
         self.size -= 1
 
